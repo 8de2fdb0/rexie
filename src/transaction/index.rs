@@ -29,6 +29,11 @@ impl StoreIndex {
         self.index.get(key)?.await.map_err(Into::into)
     }
 
+    /// Gets a key from the store with given key
+    pub async fn get_key(&self, key: JsValue) -> Result<Option<JsValue>> {
+        self.index.get_key(key)?.await.map_err(Into::into)
+    }
+
     /// Retrieves the keys of all objects inside the index
     /// See: [MDN:IDBIndex/getAllKeys](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
     pub async fn get_all_keys(
